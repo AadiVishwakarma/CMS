@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Zee5 Content Dashboard</title>
+    
+   <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity=
+"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+         crossorigin="anonymous">
+           
+    <link rel="stylesheet" href=
+"https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+            integrity=
+"sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+             crossorigin="anonymous">
+   
+  </head>
+  <body>
+  <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			<div class="container-fluid">
+			<a class="navbar-brand" href="https://www.zee5.com/">
+			  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Zee5_Official_logo.svg/1200px-Zee5_Official_logo.svg.png" width="50" height="50" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Content Dashboard
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="@{/zee5dashboard}">Home</a></li>
+                          <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
+                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
+                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV Dash</a></li>
+                        </ul>
+                      </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="#" th:href="@{/employee}">Users</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
+				  </li>
+                  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Weekly Webisode</a>
+				  </li>
+                  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Translations</a>
+				  </li>
+				  <!-- <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  About
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <li><a class="dropdown-item" href="https://www.zee5.com/aboutus">Zee5</a></li>
+					  <li><a class="dropdown-item" href="https://docs.google.com/document/d/1Oj1AoNq3OePpnD8rdgt-kVoRH1M96LKZQE8wju_HK88/edit">Domains</a></li>
+					  <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Company T&C</a></li>
+					</ul>
+				  </li> -->
+				</ul>
+			  </div>
+			</div>
+			
+				
+			  
+			
+		  </nav>
+</div>
+    <div class="container my-2">
+    
+      <h2 class="d-flex justify-content-center">Toch Dashboard</h2>
+      
+      <a th:href = "@{/zee5dashboard/toch-dashboard/newShowForm}" class="btn btn-primary text-white btn-sm mb-3 "> Add Show</a>
+      <a th:href = "@{/zee5dashboard/toch-dashboard/download/toch_export.csv}" class="btn btn-secondary text-white btn-sm mb-3 "> Export CSV</a>
+      <table border="1" class="table table-striped table-responsive-md table-bordered">
+        <thead>
+          <tr class="p-3 mb-2 bg-primary text-white">
+          	<th>Row No.</th>
+            <th>ShowName</th>
+            <th>Channel</th>
+            <th>FTP Folder</th>
+            <th>Language</th>
+            <th>Web Request</th>
+            <th>Best Scene Request</th>
+            <th>Performance Request</th>
+            <th class="col-md-2"> Action </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="tochdashboard : ${listShows}">
+            <td th:text="${tochdashboard.id}"></td>
+            <td th:text="${tochdashboard.showName}"></td>
+            <td th:text="${tochdashboard.channel}"></td>
+            <td th:text="${tochdashboard.ftpFolder}"></td>
+            <td th:text="${tochdashboard.language}"></td>
+            <td th:text="${tochdashboard.webRequest}"></td>
+            <td th:text="${tochdashboard.bestSceneRequest}"></td>
+            <td th:text="${tochdashboard.performanceRequest}"></td>
+            <td class="text-center">
+            <a th:href="@{/zee5dashboard/toch-dashboard/showFormForUpdate/{id}(id=${tochdashboard.id})}" class="btn btn-primary btn-sm refresh_status bg-primary text-white">Edit</a>
+            <a th:href="@{/zee5dashboard/toch-dashboard/deleteShow/{id}(id=${tochdashboard.id})}" class="btn btn-danger btn-sm refresh_status bg-primary text-white">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+ 
+		</div>
+    
+  </body>
+</html>

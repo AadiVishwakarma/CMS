@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit Show Details</title>
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity=
+"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+         crossorigin="anonymous">
+           
+    <link rel="stylesheet" href=
+"https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+            integrity=
+"sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+             crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			<div class="container-fluid">
+			<a class="navbar-brand" href="https://www.zee5.com/">
+			  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Zee5_Official_logo.svg/1200px-Zee5_Official_logo.svg.png" width="50" height="50" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Content Dashboard
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="@{/zee5dashboard}">Home</a></li>
+                          <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
+                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
+                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV Dash</a></li>
+                        </ul>
+                      </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="#" th:href="@{/employee}">Users</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
+				  </li>
+                  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Weekly Webisode</a>
+				  </li>
+                  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Translations</a>
+				  </li>
+				  <!-- <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  About
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <li><a class="dropdown-item" href="https://www.zee5.com/aboutus">Zee5</a></li>
+					  <li><a class="dropdown-item" href="https://docs.google.com/document/d/1Oj1AoNq3OePpnD8rdgt-kVoRH1M96LKZQE8wju_HK88/edit">Domains</a></li>
+					  <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Company T&C</a></li>
+					</ul>
+				  </li> -->
+				</ul>
+			  </div>
+			</div>
+			
+				
+			  
+			
+		  </nav>
+</div>
+  
+  <h3>Edit Show Details</h3>
+
+	<div class="container my-5">
+     <form action="#" th:action="@{/zee5dashboard/toch-dashboard/{id} (id=${tochdashboard.id})}" th:object="${tochdashboard}" method="POST"
+        class="m-form m-form--fit m-form--label-align-right">
+     <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label"> Show Name: </label>
+              <div class="col-lg-6">
+                <input
+                  type="text"
+                  th:field="*{showName}"
+                  class="form-control m-input"
+                  name="show_name"
+                  value=""
+                  placeholder="Enter Show Name"
+                  required=""
+                />
+              </div>
+            </div>
+            
+         <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label"> Language: </label>
+              <div class="col-lg-6">
+                <select th:field="*{language}">
+                  <option th:value="hi" th:text="hi"></option>
+                  <option th:value="mr" th:text="mr"></option>
+                  <option th:value="kn" th:text="kn"></option>
+                  <option th:value="ml" th:text="ml"></option>
+                  <option th:value="ta" th:text="ta"></option>
+                  <option th:value="te" th:text="te"></option>
+                  <!-- option th:value="or" th:text="or"></option-->
+                  <option th:value="bn" th:text="bn"></option>
+                  <option th:value="pn" th:text="pn"></option>
+                  <option th:value="hr" th:text="hr"></option>
+                </select>
+              </div>
+            </div>
+            
+            
+         <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label"> Channel Name: </label>
+              <div class="col-lg-6">
+                <select th:field="*{channel}">
+                  <option th:value="AND_TV">AND_TV</option>
+                  <option th:value="ZEE_TV">ZEE_TV</option>
+                  <option th:value="ZEE_KANNADA">ZEE_KANNADA</option>
+                  <option th:value="ZEE_MARATHI">ZEE_MARATHI</option>
+                  <option th:value="ZEE_KERALAM">ZEE_KERALAM</option>
+                  <option th:value="ZEE_BANGLA">ZEE_BANGLA</option>
+                  <option th:value="ZEE_GANGA">ZEE_GANGA</option>
+                  <option th:value="ZEE_TAMIL">ZEE_TAMIL</option>
+                  <option th:value="ZEE_TELUGU">ZEE_TELUGU</option>
+                  <option th:value="ZEE_PUNJABI">ZEE_PUNJABI</option>
+                  <option th:value="ZEE_SARTHAK">ZEE_SARTHAK</option>
+                </select>
+              </div>
+            </div>
+            
+         <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label"> FTP Folder: </label>
+              <div class="col-lg-6">
+                <select th:field="*{ftpFolder}" name="ftp_folder">
+                  <option th:value="Episode">Episode</option>
+                </select>
+              </div>
+            </div>
+            
+         <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label"> Web Request: </label>
+              <div class="col-lg-6">
+                <select th:field="*{webRequest}" name="web_req">
+                  <option th:value="Yes">Yes</option>
+                  <option th:value="No">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label">
+                Best Scene Request:
+              </label>
+              <div class="col-lg-6">
+                <select th:field="*{bestSceneRequest}" name="best_scene_req">
+                  <option th:value="Yes">Yes</option>
+                  <option th:value="No">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label">
+                Performance Request:
+              </label>
+              <div class="col-lg-6">
+                <select th:field="*{performanceRequest}" name="perf_req">
+                  <option th:value="Yes">Yes</option>
+                  <option th:value="No">No</option>
+                </select>
+              </div>
+            </div>
+            
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-12">
+                    <button
+                      type="submit"
+                      id="submit_btn"
+                      class="btn btn-primary"
+                    >
+                      Save
+                    </button>
+                      <a th:href="@{/zee5dashboard/toch-dashboard}" class="btn btn-warning">Cancel</a>
+                  </div>
+                </div>  
+     </form>
+    </div>
+	
+</body>
+</html>
