@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Zee5 Content Dashboard</title>
@@ -20,9 +20,9 @@
             integrity=
 "sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
              crossorigin="anonymous">
-  </head>
 </head>
 <body>
+
 
 <div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -77,6 +77,112 @@
 			  
 			
 		  </nav>
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<div class = "container">
+	<div class = "row">
+		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+			<h1 class = "text-center"> Create New Show </h1>
+			<div class = "card-body">
+				<form th:action="@{/zee5dashboard/shows}" th:object = "${show}" method="POST">
+					<div class ="form-group">
+						<label> ShowID </label>
+						<input
+						type = "text"
+						name = "ShowID"
+						th:field = "*{ShowID}"
+						class = "form-control"
+						placeholder="Enter Show ID" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Show Name </label>
+						<input
+						type = "text"
+						name = "ShowName"
+						th:field = "*{ShowName}"
+						class = "form-control"
+						placeholder="Enter Show Name" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Show Start Time </label>
+						<input
+						type = "number"
+						name = "ShowStartTime"
+						th:field = "*{ShowStartTime}"
+						class = "form-control"
+						placeholder="Enter Show Start Time" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Show End Time </label>
+						<input
+						type = "number"
+						name = "ShowEndTime"
+						th:field = "*{ShowEndTime}"
+						class = "form-control"
+						placeholder="Enter Show End Time" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Day Applicable </label>
+						<input
+						type = "text"
+						name = "DayApplicable"
+						th:field = "*{DayApplicable}"
+						class = "form-control"
+						placeholder="Enter Day Applicable" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> STATUS </label>
+						<input
+						type = "number"
+						name = "STATUS"
+						th:field = "*{STATUS}"
+						class = "form-control"
+						placeholder="Enter STATUS" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Season ID </label>
+						<input
+						type = "text"
+						name = "SeasonID"
+						th:field = "*{SeasonID}"
+						class = "form-control"
+						placeholder="Enter Season ID" 
+						/>
+					</div>
+					
+					<div class = "box-footer">
+						<button type="submit" class = "btn btn-primary">
+							Submit
+						</button>
+						<a th:href="@{/zee5dashboard/beforetv-dash}" class="btn btn-warning">Cancel</a>
+					</div>
+				</form>
+			
+			</div>
+		</div>
+	</div>
 </div>
 
 

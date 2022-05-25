@@ -75,15 +75,6 @@ public class UserManagementController {
 		return "redirect:/zee5dashboard/admin/admin-user";
 	}
 	
-//	@GetMapping("/manageLevel")
-//	public String manageLevel(@PathVariable(value="id") Long id,@ModelAttribute("userManagement") UserManagement userManagement,Model model)
-//	{
-//		UserManagement existingUser = userManagementService.getUserById(id);
-//		existingUser.setLevel(userManagement.getLevel());
-//		
-//		userManagementService.userUpdate(existingUser);
-//		return "redirect:/";
-//	}
 	
 	@PostMapping("/manageLevel/{id}")
 	public String manageLevel(@PathVariable(value="id") Long id,@ModelAttribute("level") String level,Model model)
