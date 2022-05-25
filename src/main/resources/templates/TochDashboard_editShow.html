@@ -40,14 +40,14 @@
                           Content Dashboard
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="@{/zee5dashboard}">Home</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
                           <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
                           <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
-                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV Dash</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
                         </ul>
                       </li>
 				  <li class="nav-item">
-					<a class="nav-link" style="font-weight: bold;" href="#" th:href="@{/employee}">Users</a>
+					<a class="nav-link" style="font-weight: bold;" href="#" th:href="@{/zee5dashboard/admin/admin-user}">Users</a>
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
@@ -78,9 +78,10 @@
 		  </nav>
 </div>
   
-  <h3>Edit Show Details</h3>
-
-	<div class="container my-5">
+<div class = "container pt-3">
+	<div class = "row">
+	<div class="container text-bg-light col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+	<h3 class = "text-center py-3"> Edit Show </h3>
      <form action="#" th:action="@{/zee5dashboard/toch-dashboard/{id} (id=${tochdashboard.id})}" th:object="${tochdashboard}" method="POST"
         class="m-form m-form--fit m-form--label-align-right">
      <div class="form-group m-form__group row">
@@ -192,6 +193,8 @@
                   </div>
                 </div>  
      </form>
+    </div>
+    </div>
     </div>
 	
 </body>

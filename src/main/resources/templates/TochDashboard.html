@@ -41,14 +41,14 @@
                           Content Dashboard
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="@{/zee5dashboard}">Home</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
                           <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
                           <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
-                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV Dash</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
                         </ul>
                       </li>
 				  <li class="nav-item">
-					<a class="nav-link" style="font-weight: bold;" href="#" th:href="@{/employee}">Users</a>
+					<a class="nav-link" style="font-weight: bold;" th:href="@{/zee5dashboard/admin/admin-user}">Users</a>
 				  </li>
 				  <li class="nav-item">
 					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
@@ -80,14 +80,17 @@
 </div>
     <div class="container my-2">
     
-      <h2 class="d-flex justify-content-center">Toch Dashboard</h2>
+      <h2 class="d-flex justify-content-center p-3">Toch Dashboard</h2>
       
+      <div class="p-2">
       <a th:href = "@{/zee5dashboard/toch-dashboard/newShowForm}" class="btn btn-primary text-white btn-sm mb-3 "> Add Show</a>
+      <a href = "#" class="btn btn-secondary text-white btn-sm mb-3 "> Import CSV</a>
       <a th:href = "@{/zee5dashboard/toch-dashboard/download/toch_export.csv}" class="btn btn-secondary text-white btn-sm mb-3 "> Export CSV</a>
+      </div>
       <table border="1" class="table table-striped table-responsive-md table-bordered">
-        <thead>
+        <thead class="table-dark">
           <tr class="p-3 mb-2 bg-primary text-white">
-          	<th>Row No.</th>
+          	<th> # </th>
             <th>ShowName</th>
             <th>Channel</th>
             <th>FTP Folder</th>
@@ -109,8 +112,8 @@
             <td th:text="${tochdashboard.bestSceneRequest}"></td>
             <td th:text="${tochdashboard.performanceRequest}"></td>
             <td class="text-center">
-            <a th:href="@{/zee5dashboard/toch-dashboard/showFormForUpdate/{id}(id=${tochdashboard.id})}" class="btn btn-primary btn-sm refresh_status bg-primary text-white">Edit</a>
-            <a th:href="@{/zee5dashboard/toch-dashboard/deleteShow/{id}(id=${tochdashboard.id})}" class="btn btn-danger btn-sm refresh_status bg-primary text-white">Delete</a>
+            <a th:href="@{/zee5dashboard/toch-dashboard/showFormForUpdate/{id}(id=${tochdashboard.id})}" class="btn btn-primary ">Edit</a>
+            <a th:href="@{/zee5dashboard/toch-dashboard/deleteShow/{id}(id=${tochdashboard.id})}" class="btn btn-danger">Delete</a>
             </td>
           </tr>
         </tbody>

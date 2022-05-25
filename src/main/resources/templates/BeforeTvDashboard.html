@@ -41,7 +41,7 @@
                           Content Dashboard
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="#">Home</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
                           <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
                           <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
@@ -93,21 +93,25 @@
 
 <div class ="container">
 	<div class = "row">
-		<h1> List Shows </h1>
+	    <h2 class="d-flex justify-content-center p-3">Before Tv Dashboard</h2>
+		
 	</div>
 	
 	<div class = "row">
-		<div class = "col-lg-3">
+		<div class = "col-lg-6">
 			<a th:href = "@{/zee5dashboard/beforetv-add}" class = "btn btn-primary btn-sm mb-3"> Add Show</a>
+			<a href = "#" class="btn btn-secondary text-white btn-sm mb-3 "> Import CSV</a>
 			<a th:href = "@{/zee5dashboard/beforetv-dash/download/beforetvDashboard.csv}" class="btn btn-secondary text-white btn-sm mb-3 "> Export CSV</a>
 		</div>
 	</div>
+	<div class="p-3">
 	<form th:action="@{/search}" method="get">
   <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Show Name & Show Id" size="50" >
   <button type="submit" class="btn btn-info" >Search</button>
   <button type="submit" class="btn btn-info" >Reset</button>
   </form>
-	<table class = "table table-striped table-bordered">
+  </div>
+	<table border="1" class = "table table-striped table-responsive-md table-bordered">
 		<thead class = "table-dark">
 			<tr>
 				<th> # </th>

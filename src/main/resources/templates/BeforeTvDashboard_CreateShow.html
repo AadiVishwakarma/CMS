@@ -41,7 +41,7 @@
                           Content Dashboard
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="#">Home</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
                           <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
                           <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
@@ -91,8 +91,8 @@
 <br>
 <div class = "container">
 	<div class = "row">
-		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-			<h1 class = "text-center"> Create New Show </h1>
+		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card text-bg-light">
+			<h3 class = "text-center"> Create New Show </h3>
 			<div class = "card-body">
 				<form th:action="@{/zee5dashboard/shows}" th:object = "${show}" method="POST">
 					<div class ="form-group">
