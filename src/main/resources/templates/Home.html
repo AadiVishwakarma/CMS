@@ -77,6 +77,75 @@
 		  </nav>
 </div>
 
+
+<div style="padding-bottom: 180px"></div>
+    <style>
+      .card {
+        background-color: rgb(81, 92, 92);
+        /* padding-left: 20px; */
+        /* padding: auto; */
+        left: 50%;
+        height: 130%;
+        /* right: px; */
+        /* padding-right: 20px; */
+      }
+
+      .card-title {
+        color: white;
+      }
+
+      .btn btn-secondary {
+        top: 100%;
+      }
+    </style>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Before TV Dashboard</h5>
+            <a
+              href="#"
+              th:href="@{/zee5dashboard/beforetv-dash}"
+              class="btn btn-secondary"
+              >View</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Toch Dashboard</h5>
+
+            <a
+              href="#"
+              th:href="@{/zee5dashboard/toch-dashboard}"
+              class="btn btn-secondary"
+              >View</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">User-Admin</h5>
+
+            <a
+              href="#"
+              th:href="@{/zee5dashboard/admin/admin-user}"
+              class="btn btn-secondary"
+              style="position: bottom"
+              >Update</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 <style>
       footer {
         position: fixed;

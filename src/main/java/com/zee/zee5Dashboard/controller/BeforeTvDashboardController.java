@@ -95,6 +95,7 @@ public class BeforeTvDashboardController {
 	        existingShow.setDayApplicable(show.getDayApplicable());
 	        existingShow.setSTATUS(show.getSTATUS());
 	        existingShow.setSeasonID(show.getSeasonID());
+	        existingShow.setToch(show.getToch());
 
 	        // save updated show object
 	        beforetvService.updateShow(existingShow);

@@ -42,4 +42,6 @@ public class BeforeTvDashboard {
 
   @NotBlank
   String SeasonID;
+  
+  String Toch;
 }

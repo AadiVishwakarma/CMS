@@ -216,7 +216,9 @@ Search
 				<th> Day applicable </th>
 				<th> Status </th>
 				<th> Season ID </th>
+				<th> Toch </th>
 				<th> Action </th>
+				
 			</tr>
 		</thead>
 		
@@ -230,6 +232,7 @@ Search
 				<td th:text = "${show.DayApplicable}"></td>
 				<td th:text = "${show.STATUS}"></td>
 				<td th:text = "${show.SeasonID}"></td>
+				<td th:text="${show.Toch}"></td>
 				<td>
 					<a th:href = "@{/zee5dashboard/beforetv-edit/{id}(id=${show.id})}"
 					 class = "btn btn-primary">Edit</a>

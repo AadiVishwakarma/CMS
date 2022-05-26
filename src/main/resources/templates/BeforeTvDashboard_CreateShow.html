@@ -136,7 +136,7 @@
 						placeholder="Enter Show End Time" 
 						/>
 					</div>
-					
+					<!--  
 					<div class ="form-group">
 						<label> Day Applicable </label>
 						<input
@@ -169,7 +169,165 @@
 						placeholder="Enter Season ID" 
 						/>
 					</div>
+					-->
+					<div class="form-group d-none" >
+                          <label class="col-lg-3 col-form-label">
+                            Days applicable :
+                          </label>
+                          <div class="col-lg-6">
+                            <input
+                              type="text"
+                              class="form-control m-input"
+                              id="DayApplicable"
+                              name="DayApplicable"
+                              th:field="*{DayApplicable}"
+                              value=""
+                              placeholder="Enter days applicable"
+                              required
+                              disabled
+                            />
+                          </div>
+                        </div>
+                        
+                        <div class="form-group m-form__group row">
+                          <label class="col-lg-3 col-form-label">
+                            Day Parts
+                          </label>
+                          <div class="col-lg-6 checkboxes">
+                            <input
+                              id="all_check"
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="ALL"
+                            />All
+                            <input
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="Sun"
+                            />Sunday
+                            <input
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="Mon"
+                            />Monday
+                            <input
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="Tue"
+                            />Tuesday
+                            <input
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="Wed"
+                            />Wednesday
+                            <div></div>
+                            <input
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="Thu"
+                            />Thursday
+                            <input
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="Fri"
+                            />Friday
+                            <input
+                              type="checkbox"
+                              name="days_applicable"
+                              class="days_applicable"
+                              th:field="*{DayApplicable}"
+                              th:value="Sat"
+                            />Saturday
+                          </div>
+                        </div>
 					
+					<div class ="form-group">
+						<label> STATUS </label>
+						<input
+						type = "number"
+						name = "STATUS"
+						th:field = "*{STATUS}"
+						class = "form-control"
+						placeholder="Enter STATUS" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Season ID </label>
+						<input
+						type = "text"
+						name = "SeasonID"
+						th:field = "*{SeasonID}"
+						class = "form-control"
+						placeholder="Enter Season ID" 
+						/>
+					</div>
+					<div class="form-group m-form__group row">
+                          <label class="col-lg-3 col-form-label">
+                            toch :
+                            </label>
+                           <div class="col-lg-6 checkboxes ">
+                           <select id="myCheck" name="check" onclick="myFunction2(this)" onChange=Details() th:field="*{Toch}"
+                              value="gettext">
+                             <option value="Yes">Yes</option>
+                             <option value="No">No</option> 
+                               
+                           </select>  
+                                        
+                           </div>
+                          </div> 
+                          <div id="toch" class="d-none" >
+                          <div class="form-group m-form__group row" >
+                          <label class="col-3 col-form-label" >
+                            Web Request :
+                            </label>
+                           <div class="col-lg-6 checkboxes ">
+                            <select name="web" >
+                               <option value="Yes">Yes</option>
+                               <option value="No" selected>No</option>    
+                             </select>
+	                        
+                           </div>
+                          </div> 
+                           <div class="form-group m-form__group row">
+                          <label class="col-3 col-form-label">
+                            Best Scene Request :
+                            </label>
+                           <div class="col-lg-6 checkboxes ">
+                           <select name="best" >
+                               <option value="Yes">Yes</option>
+                               <option value="No" selected>No</option>    
+                             </select>
+	                        
+                           </div>
+                          </div> 
+                          <div class="form-group m-form__group row">
+                          <label class="col-3 col-form-label">
+                            Performance Request :
+                            </label>
+                           <div class="col-lg-6 checkboxes ">
+                            <select name="performance" >
+                               <option value="Yes">Yes</option>
+                               <option value="No" selected>No</option>    
+                             </select>
+	                        
+                           </div>
+                          </div> 
+                         </div>
 					<div class = "box-footer">
 						<button type="submit" class = "btn btn-primary">
 							Submit
@@ -182,6 +340,30 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+ 
+ function myFunction2(cbox){
+	 
+	 if (cbox.value=="Yes") {
+		 	toch.className ="d-block"
+	      } else {
+	    	  toch.className="d-none"
+	      }
+ }
+ 
+ function Details()
+ {
+    var value = document.getElementById("myCheck");  
+    var getvalue = value.options[value.selectedIndex].value;  
+    var gettext = value.options[value.selectedIndex].text;  
+    
+ }  
+</script>
+
+
+
 
 
 <style>
