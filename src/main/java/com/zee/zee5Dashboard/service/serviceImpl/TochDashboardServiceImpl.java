@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.zee.zee5Dashboard.entity.TochDashboard;
@@ -54,6 +56,12 @@ public class TochDashboardServiceImpl implements TochDashboardService{
 	public void deleteShowById(long id) {
 		// TODO Auto-generated method stub
 		this.tochdashboardRepository.deleteById(id);
+	}
+	
+	@Override
+	public Page<TochDashboard> getAllShowsByPage(int page, int size) {
+	// TODO Auto-generated method stub
+	return tochdashboardRepository.findAll(PageRequest.of(page, size));
 	}
 
 }

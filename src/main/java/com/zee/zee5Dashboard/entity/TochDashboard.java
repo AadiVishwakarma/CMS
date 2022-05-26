@@ -44,4 +44,6 @@ public class TochDashboard {
 	
 	@Column(name ="Performance_Request")
 	private String performanceRequest;
+	
+	Integer position;
 }

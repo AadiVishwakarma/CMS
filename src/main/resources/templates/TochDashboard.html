@@ -28,7 +28,7 @@
    
   </head>
   <body>
-  <div class="container-fluid">
+  <div >
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 			<div class="container-fluid">
 			<a class="navbar-brand" href="https://www.zee5.com/">
@@ -143,9 +143,9 @@ tr[i].style.display = "none";
 
 
 
-    <div class="container my-2">
+    <div class="container my-1">
     
-      <h2 class="d-flex justify-content-center p-3">Toch Dashboard</h2>
+      <h2 class="d-flex justify-content-center p-1">Toch Dashboard</h2>
       
       <div class="p-2">
       <a th:href = "@{/zee5dashboard/toch-dashboard/newShowForm}" class="btn btn-primary text-white btn-sm mb-3 "> Add Show</a>
@@ -164,7 +164,7 @@ tr[i].style.display = "none";
   -->
   
   <div class="m-portlet__body">
-<div class="form-group m-form__group mt-2 mb-2 col-md-6">
+<div class="form-group m-form__group mt-1 mb-1 col-md-6">
 
 <div class="input-group">
 <div class="input-group-prepend">
@@ -174,7 +174,7 @@ tr[i].style.display = "none";
 class="btn btn-warning"
 id="clearq"
 type="button"
-
+onClick="document.getElementById('query_input').value = ''"
 >
 Clear
 </button>
@@ -233,6 +233,37 @@ Search
           </tr>
         </tbody>
       </table>
+      <!-- pagination -->
+<nav aria-label="Pagination" th:if="${numPages gt 0}">
+<ul class="pagination justify-content-center font-weight-medium">
+<li class="page-item" th:classappend="${numRecords eq 0 || currPage eq 1} ? 'disabled'">
+<a class="page-link svg-icon"
+th:href="@{/parts?page={id}(id=${numRecords lt pageSize ? 1 : currPage - 1})}"
+aria-label="Previous" th:text="Previous"
+title="Previous Page" rel="tooltip">
+<span aria-hidden="true" data-feather="chevrons-left" width="20" height="20"></span>
+</a>
+</li>
+<li class="page-item 2" th:classappend="${i eq currPage} ? 'active'"
+th:each="i : ${#numbers.sequence( 1, numPages > currPage + 2 ? currPage + 2 : numPages, 1)}">
+<a class="page-link" th:href="@{/parts?page={id}(id=${i})}" th:text="${i}"
+th:title="${'Page '+ i}" rel="tooltip">
+</a>
+</li>
+<li class="page-item disabled" th:if="${currPage + 2 < numPages}">
+<a class="page-link svg-icon" href="#">
+<span data-feather="more-horizontal" width="20" height="20"> ... </span>
+</a>
+</li>
+<li class="page-item" th:classappend="${currPage eq numPages} ? 'disabled'">
+<a class="page-link svg-icon" th:href="@{/parts?page={id}(id=${currPage + 1})}"
+aria-label="Next" th:text="Next"
+title="Next Page" rel="tooltip">
+<span aria-hidden="true" data-feather="chevrons-right" width="20" height="20"></span>
+</a>
+</li>
+</ul>
+</nav>
  
 		</div>
     <style>

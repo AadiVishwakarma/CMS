@@ -14,6 +14,7 @@ public interface BeforeTvDashboardRepository extends JpaRepository<BeforeTvDashb
 
 //	@Query(value = "select * from beforetvdashboard s where s.ShowID like %:keyword% or s.ShowName like %:keyword%", nativeQuery = true)
 //	 List<BeforeTvDashboard> findByKeyword(@Param("keyword") String keyword);
+	
 //	@Query(value="select * from beforetvdashboard where show_name like %:keyword% or id like %:keyword%", nativeQuery = true)
 //	List<BeforeTvDashboard> findByKeyword(@Param("keyword") String keyword);
 }

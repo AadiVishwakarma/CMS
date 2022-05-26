@@ -2,7 +2,10 @@ package com.zee.zee5Dashboard.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,21 +22,50 @@ public class TochDashboardController {
 	@Autowired
 	private TochDashboardService tochdashboardService;
 	
-	@GetMapping("/zee5dashboard/toch-dashboard")
-	public String tochDashboard(Model model)
-	{
-//		List<Dashboard> allShows = dashboardService.getAllShows();
-//		long id = 1;
-//		for (Dashboard d1: allShows) {
-//		d1.setId(id++);
-//		}
-//		model.addAttribute("listShows",allShows);
-//		return "index";
-		
-		List<TochDashboard> listShow = tochdashboardService.getAllShows();
-		model.addAttribute("listShows", listShow);
-		return "TochDashboard";
+	@GetMapping({"/zee5dashboard/toch-dashboard","/parts"})
+	public String listShows(HttpServletRequest request, Model model) {
+	int currPage = 1; // default page number
+	int pageSize = 3; // default pageSize
+	int numRecords = tochdashboardService.getAllShows().size();
+	int numPages = numRecords / pageSize;
+	if (numRecords % pageSize > 0) {
+	numPages++;
 	}
+
+	if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+	currPage = Integer.parseInt(request.getParameter("page"));
+	}
+
+	Page<TochDashboard> allShows = tochdashboardService.getAllShowsByPage(currPage-1, pageSize);
+	System.out.println(allShows.getSize());
+	int position = (currPage-1)*pageSize + 1;
+	for (TochDashboard show: allShows) {
+	show.setPosition(position++);
+	}
+	model.addAttribute("numPages", numPages);
+	model.addAttribute("pageSize", pageSize);
+	model.addAttribute("listShows", allShows);
+	model.addAttribute("currPage", currPage);
+	model.addAttribute("numRecords", numRecords);
+	return "TochDashboard";
+	}
+	
+	
+//	@GetMapping("/zee5dashboard/toch-dashboard")
+//	public String tochDashboard(Model model)
+//	{
+////		List<Dashboard> allShows = dashboardService.getAllShows();
+////		long id = 1;
+////		for (Dashboard d1: allShows) {
+////		d1.setId(id++);
+////		}
+////		model.addAttribute("listShows",allShows);
+////		return "index";
+//		
+//		List<TochDashboard> listShow = tochdashboardService.getAllShows();
+//		model.addAttribute("listShows", listShow);
+//		return "TochDashboard";
+//	}
 	
 	@GetMapping("/zee5dashboard/toch-dashboard/newShowForm")
 	public String addNewShow(Model model)
