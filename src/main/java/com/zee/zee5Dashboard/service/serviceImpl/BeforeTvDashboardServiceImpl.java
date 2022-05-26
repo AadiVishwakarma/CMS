@@ -54,10 +54,10 @@ public class BeforeTvDashboardServiceImpl implements BeforeTvDashboardService {
 		beforetvdashboardRepository.deleteById(id);
 	}
 
-	@Override
-	public List<BeforeTvDashboard> getByKeyword(String keyword) {
-		// TODO Auto-generated method stub
-		return beforetvdashboardRepository.findByKeyword(keyword);
-	}
+//	@Override
+//	public List<BeforeTvDashboard> findByKeyword(String keyword) {
+//		// TODO Auto-generated method stub
+//		return beforetvdashboardRepository.findByKeyword(keyword);
+//	}
 
 }

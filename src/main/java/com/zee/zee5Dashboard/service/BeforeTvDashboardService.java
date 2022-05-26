@@ -14,5 +14,5 @@ public interface BeforeTvDashboardService {
 	BeforeTvDashboard getShowById(Long id);
 	BeforeTvDashboard updateShow(BeforeTvDashboard show);
 	void deleteShowById(Long id);
-	public List<BeforeTvDashboard> getByKeyword(String keyword);
+//	public List<BeforeTvDashboard> findByKeyword(String keyword);
 }

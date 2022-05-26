@@ -1,5 +1,7 @@
 package com.zee.zee5Dashboard.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +30,8 @@ public class TochDashboardController {
 //		model.addAttribute("listShows",allShows);
 //		return "index";
 		
-		model.addAttribute("listShows", tochdashboardService.getAllShows());
+		List<TochDashboard> listShow = tochdashboardService.getAllShows();
+		model.addAttribute("listShows", listShow);
 		return "TochDashboard";
 	}
 	

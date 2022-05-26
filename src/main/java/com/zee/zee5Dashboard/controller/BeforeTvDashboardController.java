@@ -52,16 +52,16 @@ public class BeforeTvDashboardController {
 	    }
 	    
 
-	    @RequestMapping(path = {"/","/search"})
-	    public String home(BeforeTvDashboard show, Model model, String keyword) {
-	     if(keyword!=null) {
-	      List<BeforeTvDashboard> list = beforetvService.getByKeyword(keyword);
-	      model.addAttribute("list", list);
-	     }else {
-	     List<BeforeTvDashboard> list = beforetvService.getAllShows();
-	     model.addAttribute("list", list);}
-	     return "index";
-	    }
+//	    @RequestMapping(path = {"/","/search"})
+//	    public String home(BeforeTvDashboard show, Model model, String keyword) {
+//	     if(keyword!=null) {
+//	      List<BeforeTvDashboard> list = beforetvService.findByKeyword(keyword);
+//	      model.addAttribute("list", list);
+//	     }else {
+//	     List<BeforeTvDashboard> list = beforetvService.getAllShows();
+//	     model.addAttribute("list", list);}
+//	     return "BeforeTvDashboard";
+//	    }
 	   
 	    @GetMapping("/zee5dashboard/beforetv-add")
 	    public String createShowForm(Model model) {
