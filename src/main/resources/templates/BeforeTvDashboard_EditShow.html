@@ -325,6 +325,17 @@
 
 
 
+<!-- check the existing selected days -->
+<script type="text/javascript">
+function checkDaysApplicable() {
+var days = document.getElementsByClassName("days_applicable");
+for (var day of days) {
+day.checked = DayApplicable.value.includes(day.value);
+}
+}
+checkDaysApplicable()
+</script>
+
 <script type="text/javascript">
  
  function myFunction2(cbox){
