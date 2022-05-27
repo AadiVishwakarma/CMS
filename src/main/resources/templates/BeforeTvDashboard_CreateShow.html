@@ -342,6 +342,44 @@
 </div>
 
 
+<!-- clear_days_applicable() -->
+<script type="text/javascript">
+  function clear_days_applicable() {
+    var days = document.getElementsByClassName("days_applicable");
+    if (all_check.checked) {
+      for (var day of days) {
+        if (day.id != "all_check") {
+          day.checked = false;
+          day.disabled = true;
+        }
+      }
+    } else {
+      for (var day of days) {
+        if (day.id != "all_check") {
+          day.disabled = false;
+        }
+      }
+    }
+  }
+  function clear_all_check() {
+    all_check.checked = false;
+  }
+
+  // add listeners for all checkbox options
+  function add_listeners() {
+    all_check.onchange = clear_days_applicable;
+    var days = document.getElementsByClassName("days_applicable");
+    for (var day of days) {
+      // for all days, add clear_days_applicable to listeners
+      if (day.id != "all_check") {
+        day.onchange = clear_all_check;
+      }
+    }
+  }
+  add_listeners();
+</script>
+
+
 <script type="text/javascript">
  
  function myFunction2(cbox){
