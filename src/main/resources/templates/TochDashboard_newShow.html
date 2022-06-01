@@ -45,7 +45,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
                           <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
-                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-filter}">Before TV filter</a></li>
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
                         </ul>
                       </li>
@@ -56,7 +56,7 @@
 					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
 				  </li>
                   <li class="nav-item">
-					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Weekly Webisode</a>
+					<a class="nav-link" style="font-weight: bold;" th:href="@{/zee5dashboard/weeklywebisode}">Weekly Webisode</a>
 				  </li>
                  
 				  <!-- <li class="nav-item dropdown">
@@ -81,7 +81,7 @@
 
 <div class = "container pt-3">
 	<div class = "row">
-    <div class="container text-bg-light col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+    <div class="fluid-container text-bg-light  justify-content-center card">
     <h3 class = "text-center py-3"> New Show </h3>
     <div class = "card-body">
      <form action="#" th:action="@{/zee5dashboard/toch-dashboard/saveShow}" th:object="${tochdashboard}" method="POST"
@@ -102,6 +102,25 @@
             </div>
             
          <div class="form-group m-form__group row">
+              <label class="col-lg-3 col-form-label"> Channel Name: </label>
+              <div class="col-lg-6">
+                <select th:field="*{channel}">
+                  <option th:value="AND_TV">AND_TV</option>
+                  <option th:value="ZEE_TV">ZEE_TV</option>
+                  <option th:value="ZEE_KANNADA">ZEE_KANNADA</option>
+                  <option th:value="ZEE_MARATHI">ZEE_MARATHI</option>
+                  <option th:value="ZEE_KERALAM">ZEE_KERALAM</option>
+                  <option th:value="ZEE_BANGLA">ZEE_BANGLA</option>
+                  <option th:value="ZEE_GANGA">ZEE_GANGA</option>
+                  <option th:value="ZEE_TAMIL">ZEE_TAMIL</option>
+                  <option th:value="ZEE_TELUGU">ZEE_TELUGU</option>
+                  <option th:value="ZEE_PUNJABI">ZEE_PUNJABI</option>
+                  <option th:value="ZEE_SARTHAK">ZEE_SARTHAK</option>
+                </select>
+              </div>
+            </div>   
+            
+         <div class="form-group m-form__group row">
               <label class="col-lg-3 col-form-label"> Language: </label>
               <div class="col-lg-6">
                 <select th:field="*{language}">
@@ -120,24 +139,7 @@
             </div>
             
             
-         <div class="form-group m-form__group row">
-              <label class="col-lg-3 col-form-label"> Channel Name: </label>
-              <div class="col-lg-6">
-                <select th:field="*{channel}">
-                  <option th:value="AND_TV">AND_TV</option>
-                  <option th:value="ZEE_TV">ZEE_TV</option>
-                  <option th:value="ZEE_KANNADA">ZEE_KANNADA</option>
-                  <option th:value="ZEE_MARATHI">ZEE_MARATHI</option>
-                  <option th:value="ZEE_KERALAM">ZEE_KERALAM</option>
-                  <option th:value="ZEE_BANGLA">ZEE_BANGLA</option>
-                  <option th:value="ZEE_GANGA">ZEE_GANGA</option>
-                  <option th:value="ZEE_TAMIL">ZEE_TAMIL</option>
-                  <option th:value="ZEE_TELUGU">ZEE_TELUGU</option>
-                  <option th:value="ZEE_PUNJABI">ZEE_PUNJABI</option>
-                  <option th:value="ZEE_SARTHAK">ZEE_SARTHAK</option>
-                </select>
-              </div>
-            </div>
+         
             
          <div class="form-group m-form__group row">
               <label class="col-lg-3 col-form-label"> FTP Folder: </label>

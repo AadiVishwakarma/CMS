@@ -43,7 +43,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
                           <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
-                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-filter}">Before TV filter</a></li>
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
                         </ul>
                       </li>
@@ -54,7 +54,7 @@
 					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
 				  </li>
                   <li class="nav-item">
-					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Weekly Webisode</a>
+					<a class="nav-link" style="font-weight: bold;" th:href="@{/zee5dashboard/weeklywebisode}">Weekly Webisode</a>
 				  </li>
                  
 				  <!-- <li class="nav-item dropdown">

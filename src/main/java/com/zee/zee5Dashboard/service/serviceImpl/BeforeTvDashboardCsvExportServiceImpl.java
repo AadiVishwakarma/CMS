@@ -15,7 +15,7 @@ public class BeforeTvDashboardCsvExportServiceImpl implements BeforeTvDashboardC
 	public void downloadCsvFile(PrintWriter printWriter, List<BeforeTvDashboard> beforetvdashboard) {
 		// TODO Auto-generated method stub
 		
-		printWriter.write("id, showID, showName,ShowStartTime,SHowEndTime,STATUS,SeasonId,Days_Applicable\n");
+		printWriter.write("id, showID, showName,ShowStartTime,ShowEndTime,STATUS,SeasonId,Days_Applicable\n");
 		for(BeforeTvDashboard dashboard1: beforetvdashboard )
 			printWriter.write(dashboard1.getId()+","+dashboard1.getShowID()+","+dashboard1.getShowName()+","+dashboard1.getShowStartTime()+","+dashboard1.getShowEndTime()+","+dashboard1.getSTATUS()+","+dashboard1.getSTATUS()+dashboard1.getSeasonID()+","+dashboard1.getDayApplicable()+"\n");
 		

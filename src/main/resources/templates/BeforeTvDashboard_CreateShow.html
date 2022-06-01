@@ -43,7 +43,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
                           <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
-                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-filter}">Before TV filter</a></li>
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
                         </ul>
                       </li>
@@ -54,7 +54,7 @@
 					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
 				  </li>
                   <li class="nav-item">
-					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Weekly Webisode</a>
+					<a class="nav-link" style="font-weight: bold;" th:href="@{/zee5dashboard/weeklywebisode}">Weekly Webisode</a>
 				  </li>
                  
 				  <!-- <li class="nav-item dropdown">
@@ -77,7 +77,12 @@
 		  </nav>
 </div>
 
+<style>
+#mon1 {
 
+left : 100%
+}
+</style>
 
 
 
@@ -89,7 +94,7 @@
 <br>
 <div class = "container">
 	<div class = "row">
-		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card text-bg-light">
+		<div class =" container justify-content-center card text-bg-light">
 			<h3 class = "text-center"> Create New Show </h3>
 			<div class = "card-body">
 				<form th:action="@{/zee5dashboard/shows}" th:object = "${show}" method="POST">
@@ -193,7 +198,8 @@
                           <label class="col-lg-3 col-form-label">
                             Day Parts
                           </label>
-                          <div class="col-lg-6 checkboxes">
+                          <div class="col-lg-6 checkboxes ">
+                         
                             <input
                               id="all_check"
                               type="checkbox"
@@ -201,35 +207,39 @@
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="ALL"
-                            />All
+                              
+                            />All &nbsp;
+                            
                             <input
+                            id = "mon1"
                               type="checkbox"
                               name="days_applicable"
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="Sun"
-                            />Sunday
+                            />Sunday &nbsp; 
                             <input
                               type="checkbox"
                               name="days_applicable"
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="Mon"
-                            />Monday
+                              
+                            />Monday&nbsp;
                             <input
                               type="checkbox"
                               name="days_applicable"
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="Tue"
-                            />Tuesday
+                            />Tuesday&nbsp;
                             <input
                               type="checkbox"
                               name="days_applicable"
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="Wed"
-                            />Wednesday
+                            />Wednesday&nbsp;
                             <div></div>
                             <input
                               type="checkbox"
@@ -237,22 +247,23 @@
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="Thu"
-                            />Thursday
+                            />Thursday&nbsp;
                             <input
                               type="checkbox"
                               name="days_applicable"
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="Fri"
-                            />Friday
+                            />Friday &nbsp;
                             <input
                               type="checkbox"
                               name="days_applicable"
                               class="days_applicable"
                               th:field="*{DayApplicable}"
                               th:value="Sat"
-                            />Saturday
+                            />Saturday &nbsp;
                           </div>
+                          
                         </div>
 					
 					<div class ="form-group">
@@ -276,16 +287,19 @@
 						placeholder="Enter Season ID" 
 						/>
 					</div>
+					
+					
+					<!--  
 					<div class="form-group m-form__group row">
                           <label class="col-lg-3 col-form-label">
                             toch :
                             </label>
                            <div class="col-lg-6 checkboxes ">
-                           <select id="myCheck" name="check" onclick="myFunction2(this)" onChange=Details() th:field="*{Toch}"
+                           <select id="myCheck" name="check" onclick="myFunction2()"  th:field="*{Toch}"
                               value="gettext">
+                              <option value="No">No</option> 
                              <option value="Yes">Yes</option>
-                             <option value="No">No</option> 
-                               
+                                                            
                            </select>  
                                         
                            </div>
@@ -328,6 +342,9 @@
                            </div>
                           </div> 
                          </div>
+                         
+                         
+                         -->
 					<div class = "box-footer">
 						<button type="submit" class = "btn btn-primary">
 							Submit
@@ -382,22 +399,19 @@
 
 <script type="text/javascript">
  
- function myFunction2(cbox){
-	 
-	 if (cbox.value=="Yes") {
+ function myFunction2(){
+	 var value = document.getElementById("myCheck");  
+	    var getvalue = value.options[value.selectedIndex].value;  
+	    var gettext = value.options[value.selectedIndex].text;
+	 if (getvalue=="Yes") {
 		 	toch.className ="d-block"
 	      } else {
 	    	  toch.className="d-none"
 	      }
  }
  
- function Details()
- {
-    var value = document.getElementById("myCheck");  
-    var getvalue = value.options[value.selectedIndex].value;  
-    var gettext = value.options[value.selectedIndex].text;  
-    
- }  
+
+ 
 </script>
 
 

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Zee5 Content Dashboard</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity=
+"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+         crossorigin="anonymous">
+           
+    <link rel="stylesheet" href=
+"https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+            integrity=
+"sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+             crossorigin="anonymous">
+             
+             <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com//ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style>
+#beforetvfilter_filter {
+	display: none;
+}
+</style>
+
+</head>
+<body>
+
+
+<div >
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			<div class="container-fluid">
+			<a class="navbar-brand" href="https://www.zee5.com/">
+			  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Zee5_Official_logo.svg/1200px-Zee5_Official_logo.svg.png" width="50" height="50" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Content Dashboard
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
+                          <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
+                          <li><a class="dropdown-item" th:href = "@{/zee5dashboard/beforetvfilter}">Before TV filter</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
+                        </ul>
+                      </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="#" th:href="@{/zee5dashboard/admin/admin-user}">Users</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
+				  </li>
+                  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Weekly Webisode</a>
+				  </li>
+                  
+				  <!-- <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  About
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <li><a class="dropdown-item" href="https://www.zee5.com/aboutus">Zee5</a></li>
+					  <li><a class="dropdown-item" href="https://docs.google.com/document/d/1Oj1AoNq3OePpnD8rdgt-kVoRH1M96LKZQE8wju_HK88/edit">Domains</a></li>
+					  <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Company T&C</a></li>
+					</ul>
+				  </li> -->
+				</ul>
+			  </div>
+			</div>
+			
+				
+			  
+			
+		  </nav>
+</div>
+
+
+
+<div class ="container">
+	<div class = "row">
+	    <h2 class="d-flex justify-content-center p-1">Before Tv Filter</h2>
+		
+	</div>
+	
+	<div class = "row">
+		<div class = "col-lg-6">
+			
+			<a th:href = "@{/zee5dashboard/beforetv-filter/download/beforetvFilter.csv}" class="btn btn-secondary text-white btn-sm mb-3 "> Export CSV</a>
+		</div>
+	</div>
+	
+	<!-- 
+	<div class="p-1">
+	
+	<form th:action="@{/zee5dashboard/beforetv-dash}" method="get">
+	
+	
+	<div class="input-group">
+  <input id="filter" type="text" class="form-control" name="keyword" th:value="${keyword}"  placeholder="Find by Show Name & Show Id" size="50" >
+    <button type="submit" class="btn btn-info" >Search</button>
+  <button th:href="@{/zee5dashboard/beforetv-dash}" class="btn btn-warning">Clear</button>
+  </div>
+  -->
+  
+  <!--  
+   <div class="m-portlet__body">
+<div class="form-group m-form__group mt-1 mb-1 col-md-6">
+
+<div class="input-group">
+<div class="input-group-prepend">
+<button th:href="@{/zee5dashboard/toch-dashboard}" class="btn btn-warning">Clear</button>
+<!--  
+<button
+class="btn btn-warning"
+id="clearq"
+type="button"
+
+>
+Clear
+</button>
+
+</div>
+<input
+type="text"
+id="query_input"
+class="form-control"
+placeholder="Search for..."
+value=""
+/>
+<div class="input-group-append">
+<button
+class="btn btn-success"
+id="searchq"
+type="button"
+onClick="searchTable()"
+>
+Search
+</button>
+</div>
+</div>
+ 
+</div>
+</div>
+  </form>
+  </div>
+  
+ -->
+  
+  <div id="beforetvfilter_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+  
+  <div class="form-group m-form__group has-success col-md-4 mt-2">
+<div class="input-group" id="m_daterangepicker_1">
+<input type="text" class="form-control m-input" id="range" value=" / " placeholder="Select date range">
+<div class="input-group-append">
+<span class="input-group-text"><i class="la la-calendar-check-o"></i></span>
+</div>
+<a href="/zee5dashboard/public/beforetv-filter" class="btn btn-warning">RESET</a>
+</div>
+</div>
+  
+	<table id="beforetvfilter"  class = "table table-bordered table-responsive table-hover m-table m-table--head-bg-brand dataTable no-footer">
+		<thead class = "table-dark">
+			<tr>
+				<th> # </th>
+				<th> Show Name</th>
+				<th> Episode ID </th>
+				<th> Index No </th>
+				<th> Release Date </th>
+				<th> Language </th>
+				<th> Start time </th>
+				<th> End time </th>
+				<th> TV Show ID </th>
+				<th> Action </th>
+				<th> SVOD Remarks </th>
+				<th> SVOD Status </th>
+				<th> AVOD Remarks </th>
+				<th> AVOD Status </th>
+				<th> Source </th>
+				<th> Added On </th>
+				<th> Premium on Zee5</th>
+				<th> Free on Zee5</th>
+				
+				
+			</tr>
+		</thead>
+		
+		<tbody class="searchable">
+			<tr th:each = "show: ${allShows}">
+				<td th:text = "${show.position}"></td>
+				<td th:text = "${show.ShowName}"></td>
+				<td th:text = "${show.EpisodeId}"></td>
+				<td th:text = "${show.IndexNo}"></td>
+				<td th:text = "${show.ReleaseDate}"></td>
+				<td th:text = "${show.Language}"></td>
+				<td th:text = "${show.StartTime}"></td>
+				<td th:text = "${show.EndTime}"></td>
+				<td th:text = "${show.TvShowID}"></td>
+				<td>
+					<a th:href = "@{/zee5dashboard/beforetv-edit/{id}(id=${show.id})}"
+					 class = "btn btn-primary">Edit</a>
+					
+					<a th:href = "@{/zee5dashboard/beforetv-delete/{id}(id=${show.id})}"
+					 class = "btn btn-danger">Delete</a>
+				</td>
+				<td th:text = "${show.SVODRemarks}"></td>
+				<td th:text = "${show.SVODStatus}"></td>
+				<td th:text = "${show.AVODRemarks}"></td>
+				<td th:text = "${show.AVODStatus}"></td>
+				<td th:text = "${show.Source}"></td>
+				<td th:text = "${show.AddedOn}"></td>
+				<td th:text="${show.PremiumOnZee5}"></td>
+				<td th:text="${show.FreeOnZee5}"></td>
+			</tr>
+		</tbody>
+	
+	</table>
+	
+	<!-- Page <span th:text="${currPage}" th:remove="tag"></span> -->
+	  
+	<!-- pagination -->
+	<!--  
+	<nav aria-label="Pagination" th:if="${numPages gt 0}">
+	    <ul class="pagination justify-content-center font-weight-medium">
+	        <li class="page-item" th:classappend="${numRecords eq 0 || currPage eq 1} ? 'disabled'">
+	            <a class="page-link svg-icon"
+		               th:href="@{/shows?page={id}(id=${numRecords lt pageSize ? 1 : currPage - 1})}"
+		               aria-label="Previous" th:text="Previous"
+		               title="Previous Page" rel="tooltip">
+	               <span aria-hidden="true" data-feather="chevrons-left" width="20" height="20"></span>
+	            </a>
+	        </li>
+	        <li class="page-item 2" th:classappend="${i eq currPage} ? 'active'"
+	            th:each="i : ${#numbers.sequence( 1, numPages > currPage + 2 ? currPage + 2 : numPages, 1)}">
+	            <a class="page-link" th:href="@{/shows?page={id}(id=${i})}" th:text="${i}"
+	               th:title="${'Page '+ i}" rel="tooltip">
+	            </a>
+	        </li>
+	        <li class="page-item disabled" th:if="${currPage + 2 < numPages}">
+	            <a class="page-link svg-icon" href="#">
+	                <span data-feather="more-horizontal" width="20" height="20"> ... </span>
+	            </a>
+	        </li>
+	        <li class="page-item" th:classappend="${currPage eq numPages} ? 'disabled'">
+	            <a class="page-link svg-icon" th:href="@{/shows?page={id}(id=${currPage + 1})}"
+	               aria-label="Next" th:text="Next"
+	               title="Next Page" rel="tooltip">
+	                <span aria-hidden="true" data-feather="chevrons-right" width="20" height="20"></span>
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+	-->
+	</div>
+</div>
+
+	
+	<style>
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      .text-white {
+        text-decoration: none;
+      }
+      #foot {
+        text-align: left;
+      }
+    </style>
+
+    <footer class="bg-dark text-white">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        <div class="clearfix">
+          <a class="float-start text-white" th:href="@{/zee5dashboard}"
+            >Zee5dashboard</a
+          >
+        </div>
+        <!-- <a class="text-white" id="foot" th:href="@{zee5dashboard}">Zee5dashboard</a> -->
+      </div>
+      <!-- Copyright -->
+    </footer>
+    
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    
+    $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        $('#beforetvfilter thead tr')
+        .clone(true)
+            .addClass('filters')
+       
+            .appendTo('#beforetvfilter thead');
+        
+     
+        var table = $('#beforetvfilter').DataTable({
+        	pageLength:3, info: false,
+        	lengthMenu: [ 1, 2, 3, 4],
+        	//bFilter: false,
+            //orderCellsTop: true,
+            fixedHeader: true,
+            dom:' <"search"f><"top"l>rt<"bottom"ip><"clear">',
+            initComplete: function () {
+                var api = this.api();
+     
+                // For each column
+                api
+                    .columns()
+                    .eq(0)
+                    
+                    .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                        );
+                        var title = $(cell).text();
+                        $(cell).html('<input type="text"  placeholder="'+title + '" />');
+                        
+                        // On every keypress in this input
+                        $(
+                            'input',
+                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                        )
+                            .off('keyup change')
+                            .on('change', function (e) {
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+     
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search(
+                                        this.value != ''
+                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                            : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    )
+                                    .draw();
+                            })
+                            .on('keyup', function (e) {
+                                e.stopPropagation();
+     
+                                $(this).trigger('change');
+                                $(this)
+                                    .focus()[0]
+                                    .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+            },
+        });
+    });
+    
+    </script>
+    <script>
+    function searchTable(){
+  	  // Declare variables 
+  	  var input, filter, table, tr, td, i;
+  	  input = document.getElementById("query_input");
+  	  filter = input.value.toUpperCase();
+  	  table = document.getElementById("beforetvtable");
+  	  tr = table.getElementsByTagName("tr");
+
+  	  // Loop through all table rows, and hide those who don't match the search query
+  	  for (i = 0; i < tr.length; i++) {
+  	    td = tr[i].getElementsByTagName("td") ; 
+  	    for(j=0 ; j<td.length ; j++)
+  	    {
+  	      let tdata = td[j] ;
+  	      if (tdata) {
+  	        if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
+  	          tr[i].style.display = "";
+  	          break ; 
+  	        } else {
+  	          tr[i].style.display = "none";
+  	        }
+  	      } 
+  	    }
+  	  }
+  	}
+   
+    </script>
+    
+    <!--  
+<script>
+$(document).ready(function () {
+
+    (function ($) {
+
+        $('#filter').keyup(function () {
+
+            var rex = new RegExp($(this).val(), 'i');
+            $('.searchable tr').hide();
+            $('.searchable tr').filter(function () {
+                return rex.test($(this).text());
+            }).show();
+
+        })
+
+    }(jQuery));
+
+});
+
+</script>
+-->
+    
+</body>
+</html>

@@ -24,6 +24,10 @@
             integrity=
 "sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
              crossorigin="anonymous">
+             
+             <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com//ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
 </head>
 <body>
 
@@ -46,8 +50,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
-                          <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
-                          <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Before TV filter</a></li>
+                          <li><a class="dropdown-item" th:href ="@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-filter}">Before TV filter</a></li>
                           <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
                         </ul>
                       </li>
@@ -58,7 +62,7 @@
 					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
 				  </li>
                   <li class="nav-item">
-					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Weekly Webisode</a>
+					<a class="nav-link" style="font-weight: bold;" th:href="@{/zee5dashboard/weeklywebisode}">Weekly Webisode</a>
 				  </li>
                   
 				  <!-- <li class="nav-item dropdown">
@@ -84,58 +88,8 @@
 
 
 
-<!--  
-<script>
-$(document).ready(function () {
-
-    (function ($) {
-
-        $('#filter').keyup(function () {
-
-            var rex = new RegExp($(this).val(), 'i');
-            $('.searchable tr').hide();
-            $('.searchable tr').filter(function () {
-                return rex.test($(this).text());
-            }).show();
-
-        })
-
-    }(jQuery));
-
-});
-
-</script>
--->
-<script>
-function searchTable(){
-// Declare variables
-var input, filter, table, tr, td, i;
-input = document.getElementById("query_input");
-filter = input.value.toUpperCase();
-table = document.getElementById("beforetvtable");
-tr = table.getElementsByTagName("tr");
 
 
-
-// Loop through all table rows, and hide those who don't match the search query
-for (i = 0; i < tr.length; i++) {
-td = tr[i].getElementsByTagName("td") ;
-for(j=0 ; j<td.length ; j++)
-{
-let tdata = td[j] ;
-if (tdata) {
-if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
-tr[i].style.display = "";
-break ;
-} else {
-tr[i].style.display = "none";
-}
-}
-}
-}
-}
-
-</script>
 	
 
 
@@ -149,9 +103,25 @@ tr[i].style.display = "none";
 	<div class = "row">
 		<div class = "col-lg-6">
 			<a th:href = "@{/zee5dashboard/beforetv-add}" class = "btn btn-primary btn-sm mb-3"> Add Show</a>
-			<a href = "#" class="btn btn-secondary text-white btn-sm mb-3 "> Import CSV</a>
+			
 			<a th:href = "@{/zee5dashboard/beforetv-dash/download/beforetvDashboard.csv}" class="btn btn-secondary text-white btn-sm mb-3 "> Export CSV</a>
 		</div>
+		
+		<div class="upload-container">
+            <div class="upload-content">
+                <div class="single-upload">    
+                    <form id="singleUploadForm" name="singleUploadForm">
+                        <input id="singleFileUploadInput" type="file" name="file" class="file-input" required />
+                        <button type="submit" class="primary submit-btn">Submit</button>
+                    </form>
+                    <div class="upload-response">
+                        <div id="singleFileUploadError"></div>
+                        <div id="singleFileUploadSuccess"></div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
 	</div>
 	
 	<div class="p-3">
@@ -166,46 +136,43 @@ tr[i].style.display = "none";
   </div>
   -->
   
-   <div class="m-portlet__body">
-<div class="form-group m-form__group mt-2 mb-2 col-md-6">
-
-<div class="input-group">
-<div class="input-group-prepend">
-<button th:href="@{/zee5dashboard/toch-dashboard}" class="btn btn-warning">Clear</button>
-<!--  
-<button
-class="btn btn-warning"
-id="clearq"
-type="button"
-
->
-Clear
-</button>
--->
-</div>
-<input
-type="text"
-id="query_input"
-class="form-control"
-placeholder="Search for..."
-value=""
-/>
-<div class="input-group-append">
-<button
-class="btn btn-success"
-id="searchq"
-type="button"
-onClick="searchTable()"
->
-Search
-</button>
-</div>
-</div>
-</div>
-</div>
-  </form>
-  </div>
-	<table id="beforetvtable" border="1" class = "table table-striped table-responsive-md table-bordered">
+       <div class="m-portlet__body">
+                  <div class="form-group m-form__group mt-2 mb-2 col-md-6">
+                  
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <button
+                          class="btn btn-warning"
+                          id="clearq"
+                          type="button"
+                          
+                        >
+                          Clear
+                        </button>
+                        
+                      </div>
+                      <input
+                        type="text"
+                        id="query_input"
+                        class="form-control"
+                        placeholder="Search for..."
+                        value=""
+                      />
+                      
+                      <div class="input-group-append">
+                        <button
+                          class="btn btn-success"
+                          id="searchq"
+                          type="button"
+                          
+                        > Search
+                        </button>
+                      </div>
+                </div>
+                  </div>
+                  </div>
+	<div id="beforetvtable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+        <table id="beforetvtable" class = "table table-bordered table-responsive table-hover m-table m-table--head-bg-brand dataTable no-footer">
 		<thead class = "table-dark">
 			<tr>
 				<th> # </th>
@@ -213,11 +180,11 @@ Search
 				<th> Show Name</th>
 				<th> Show Start time </th>
 				<th> Show End time </th>
-				<th> Day applicable </th>
 				<th> Status </th>
 				<th> Season ID </th>
-				<th> Toch </th>
-				<th> Action </th>
+				<th> Day applicable </th>
+				<!--  <th> Toch </th> -->
+				<th class="col-md-2"> Action </th>
 				
 			</tr>
 		</thead>
@@ -229,10 +196,10 @@ Search
 				<td th:text = "${show.ShowName}"></td>
 				<td th:text = "${show.ShowStartTime}"></td>
 				<td th:text = "${show.ShowEndTime}"></td>
-				<td th:text = "${show.DayApplicable}"></td>
 				<td th:text = "${show.STATUS}"></td>
 				<td th:text = "${show.SeasonID}"></td>
-				<td th:text="${show.Toch}"></td>
+				<td th:text = "${show.DayApplicable}"></td>
+				<!--  <td th:text="${show.Toch}"></td> -->
 				<td>
 					<a th:href = "@{/zee5dashboard/beforetv-edit/{id}(id=${show.id})}"
 					 class = "btn btn-primary">Edit</a>
@@ -244,10 +211,11 @@ Search
 		</tbody>
 	
 	</table>
-	
+	</div>
 	<!-- Page <span th:text="${currPage}" th:remove="tag"></span> -->
 	
 	<!-- pagination -->
+	<!--  
 	<nav aria-label="Pagination" th:if="${numPages gt 0}">
 	    <ul class="pagination justify-content-center font-weight-medium">
 	        <li class="page-item" th:classappend="${numRecords eq 0 || currPage eq 1} ? 'disabled'">
@@ -278,8 +246,88 @@ Search
 	        </li>
 	    </ul>
 	</nav>
-	
+	-->
+	</div>
 </div>
+	
+	
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    
+    $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        $('#beforetvtable thead tr')
+            
+            .clone(true)
+            
+             $('#clearq').click(function() {
+    	    table.search('').draw();
+    	    $('#query_input').val('');
+    	});
+        
+        
+        
+       
+        var table = $('#beforetvtable').DataTable({
+        	pageLength:3, info: false,
+        	lengthMenu: [ 1, 2, 3, 4],
+        	lengthChange:false,
+        	//bFilter: false,
+            //orderCellsTop: true,
+            fixedHeader: true,
+            
+                // For each column
+        	
+    
+            //dom: '<"pull-left"f><"pull-left"l>tip',
+            
+                           
+            
+                
+        })
+        
+        
+        $('#searchq').click(function () {
+            table.search($("#query_input").val()).draw();
+        });
+
+       
+        
+    });
+        
+    </script>
+    <!-- 
+    <script type="text/javascript">
+    
+    initComplete : function() {
+        var input = $('.dataTables_filter input').unbind(),
+            self = this.api(),
+            $searchButton = $(`
+                    <button
+                    class="btn btn-success"
+                    id="searchq"
+                    type="button"
+                    
+                  >
+                    Search
+                  </button>
+                `)
+        .click(function() {
+          self.search(input.val()).draw();
+        })
+        $('.dataTables_filter').append($searchButton);
+    } 
+    
+    </script>
+    -->
+    
+    <style>
+    .dataTables_filter {
+                display: none;
+            }
+    .pull-left{float:left!important;}
+    
+    </style>
 	
 	<style>
       footer {
@@ -306,6 +354,6 @@ Search
       </div>
       <!-- Copyright -->
     </footer>
-    
+    <script type="text/javascript" th:src="@{/js/beforetvdashboard.js}" ></script>
 </body>
 </html>
