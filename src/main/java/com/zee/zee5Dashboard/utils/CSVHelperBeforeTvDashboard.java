@@ -25,7 +25,7 @@ public class CSVHelperBeforeTvDashboard {
 
 	public static String TYPE = "text/csv";
 	 
-	  static String[] HEADERs = { "id", "ShowName", "channel", "ftpFolder", "language" , "webRequest" , "webSceneRequest" ,"performanceRequest"};
+	  static String[] HEADERs = { "id","position","ShowId", "ShowName", "ShowStartTime","ShowEndTime","DayApplicable","STATUS","SeasonID"};
 
 	  public static boolean hasCSVFormat(MultipartFile file) {
 	 System.out.println(file.getContentType());
@@ -46,16 +46,29 @@ public class CSVHelperBeforeTvDashboard {
 
 	      Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
+	      
+	      
 	      for (CSVRecord csvRecord : csvRecords) {
 	    	  BeforeTvDashboard developerTutorial = new BeforeTvDashboard(
-	    			  	Long.parseLong(csvRecord.get("id")),
-	    			  	csvRecord.get("ShowID"),
+//	    			  	Long.parseLong(csvRecord.get("id")),
+//	    			  	csvRecord.get("ShowID"),
+//		        		csvRecord.get("ShowName"),
+//		        		Integer.parseInt(csvRecord.get("ShowStartTime")),
+//		        		Integer.parseInt(csvRecord.get("ShowEndTime")),
+//		        		Integer.parseInt(csvRecord.get("STATUS")),
+//		        		csvRecord.get("SeasonID"),
+//		        		csvRecord.get("DayApplicable")
+	    			  
+		        		Long.parseLong(csvRecord.get("id")),
+		        		Integer.parseInt(csvRecord.get("position")),
+		        		csvRecord.get("ShowID"),
 		        		csvRecord.get("ShowName"),
 		        		Integer.parseInt(csvRecord.get("ShowStartTime")),
 		        		Integer.parseInt(csvRecord.get("ShowEndTime")),
+		        		csvRecord.get("DayApplicable"),
 		        		Integer.parseInt(csvRecord.get("STATUS")),
-		        		csvRecord.get("SeasonID"),
-		        		csvRecord.get("DayApplicable")
+		        		csvRecord.get("SeasonID")
+		        		
 		        		
 		        		
 	            );

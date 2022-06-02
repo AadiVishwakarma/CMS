@@ -9,4 +9,5 @@ public interface BeforeTvFilterService {
 	List<BeforeTVFilter> getAllShows();
 	BeforeTVFilter getShowById(Long id);
 	BeforeTVFilter updateShow(BeforeTVFilter existingShow);
+	void deleteShowById(Long id);
 }

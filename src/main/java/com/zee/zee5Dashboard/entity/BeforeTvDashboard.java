@@ -10,15 +10,20 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "beforetvdashboard")
 @Entity
 @Data  // to use lombok
 public class BeforeTvDashboard {
 	
 	
-
+	
 	@Id
     @Column(name = "Id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,21 +55,23 @@ public class BeforeTvDashboard {
   
  // String Toch;
   
-  public BeforeTvDashboard()
-  {
-	   
-  }
-   public BeforeTvDashboard(long id,String ShowID, String ShowName, Integer ShowStartTime, Integer ShowEndTime, Integer STATUS, String SeasonID, String DayApplicable)
-   {
-	   this.id = id;
-	   this.ShowID = ShowID;
-	   this.ShowName = ShowName;
-	   this.ShowStartTime = ShowStartTime;
-	   this.ShowEndTime = ShowEndTime;
-	   this.STATUS = STATUS;
-	   this.SeasonID = SeasonID;
-	   this.DayApplicable = DayApplicable;
-   }
+//  public BeforeTvDashboard()
+//  {
+//	   
+//  }
+  
+ 
+//   public BeforeTvDashboard(String id, String ShowID, String ShowName, Integer ShowStartTime, Integer ShowEndTime, Integer STATUS, String SeasonID, String DayApplicable)
+//   {
+//	   this.id= id;
+//	   this.ShowID = ShowID;
+//	   this.ShowName = ShowName;
+//	   this.ShowStartTime = ShowStartTime;
+//	   this.ShowEndTime = ShowEndTime;
+//	   this.STATUS = STATUS;
+//	   this.SeasonID = SeasonID;
+//	   this.DayApplicable = DayApplicable;
+//   }
    
    @Override
 	public String toString()

@@ -17,7 +17,7 @@ import lombok.Data;
 
 
 
-@Table(name="weeklywebisode")
+@Table(name="weekly_webisode_summary")
 @Entity
 @Data
 

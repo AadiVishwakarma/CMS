@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Zee5 Content Dashboard</title>
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity=
+"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+         crossorigin="anonymous">
+           
+    <link rel="stylesheet" href=
+"https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+            integrity=
+"sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+             crossorigin="anonymous">
+
+</head>
+<body>
+
+
+<div >
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+			<div class="container-fluid">
+			<a class="navbar-brand" href="https://www.zee5.com/">
+			  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Zee5_Official_logo.svg/1200px-Zee5_Official_logo.svg.png" width="50" height="50" alt="">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Content Dashboard
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard}">Home</a></li>
+                          <li><a class="dropdown-item" th:href = "@{/zee5dashboard/toch-dashboard}">Toch Dashboard</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-filter}">Before TV filter</a></li>
+                          <li><a class="dropdown-item" th:href="@{/zee5dashboard/beforetv-dash}">Before TV Dash</a></li>
+                        </ul>
+                      </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="#" th:href="@{/zee5dashboard/admin/admin-user}">Users</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" href="https://www.zee5.com/privacypolicy">Video Summary</a>
+				  </li>
+                  <li class="nav-item">
+					<a class="nav-link" style="font-weight: bold;" th:href="@{/zee5dashboard/weeklywebisode}">Weekly Webisode</a>
+				  </li>
+                 
+				  <!-- <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="font-weight: bold;" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  About
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <li><a class="dropdown-item" href="https://www.zee5.com/aboutus">Zee5</a></li>
+					  <li><a class="dropdown-item" href="https://docs.google.com/document/d/1Oj1AoNq3OePpnD8rdgt-kVoRH1M96LKZQE8wju_HK88/edit">Domains</a></li>
+					  <li><a class="dropdown-item" href="https://www.zee5.com/termsofuse">Company T&C</a></li>
+					</ul>
+				  </li> -->
+				</ul>
+			  </div>
+			</div>
+			
+				
+			  
+			
+		  </nav>
+               </div>
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+<div class = "container">
+	<div class = "row">
+		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card text-bg-light">
+			<h3 class = "text-center"> Update Show </h3>
+			<div class = "card-body">
+				<form th:action="@{/zee5dashboard/filter-shows/{id} (id=${show.id})}" th:object = "${show}" method="POST">
+					
+					<div class ="form-group">
+						<label> Show Name </label>
+						<input
+						type = "text"
+						name = "ShowName"
+						th:field = "*{ShowName}"
+						class = "form-control"
+						placeholder="Enter Show Name" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> Episode Id </label>
+						<input
+						type = "text"
+						name = "EpisodeId"
+						th:field = "*{EpisodeId}"
+						class = "form-control"
+						placeholder="Enter Episode Id" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> Index No </label>
+						<input
+						type = "text"
+						name = "IndexNo"
+						th:field = "*{IndexNo}"
+						class = "form-control"
+						placeholder="Enter Index No" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> Release Date </label>
+						<input
+						type = "date"
+						name = "ReleaseDate"
+						th:field = "*{ReleaseDate}"
+						class = "form-control"
+						placeholder="Enter Release Date" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> Language </label>
+						<input
+						type = "text"
+						name = "Language"
+						th:field = "*{Language}"
+						class = "form-control"
+						placeholder="Enter Language" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Start Time </label>
+						<input
+						type = "number"
+						name = "StartTime"
+						th:field = "*{StartTime}"
+						class = "form-control"
+						placeholder="Enter Start Time" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> End Time </label>
+						<input
+						type = "number"
+						name = "EndTime"
+						th:field = "*{EndTime}"
+						class = "form-control"
+						placeholder="Enter End Time" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> TvShowID </label>
+						<input
+						type = "text"
+						name = "TvShowID"
+						th:field = "*{TvShowID}"
+						class = "form-control"
+						placeholder="Enter TvShowID" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> SVOD Remarks </label>
+						<input
+						type = "text"
+						name = "SVODRemarks"
+						th:field = "*{SVODRemarks}"
+						class = "form-control"
+						placeholder="Enter SVOD Remarks" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> SVOD Status </label>
+						<input
+						type = "text"
+						name = "SVODStatus"
+						th:field = "*{SVODStatus}"
+						class = "form-control"
+						placeholder="Enter SVOD Status" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> AVODRemarks </label>
+						<input
+						type = "text"
+						name = "AVODRemarks"
+						th:field = "*{AVODRemarks}"
+						class = "form-control"
+						placeholder="Enter AVODRemarks" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> AVODStatus </label>
+						<input
+						type = "text"
+						name = "AVODStatus"
+						th:field = "*{AVODStatus}"
+						class = "form-control"
+						placeholder="Enter AVODStatus" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> Source </label>
+						<input
+						type = "text"
+						name = "Source"
+						th:field = "*{Source}"
+						class = "form-control"
+						placeholder="Enter Source" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> AddedOn </label>
+						<input
+						type = "text"
+						name = "AddedOn"
+						th:field = "*{AddedOn}"
+						class = "form-control"
+						placeholder="Enter AddedOn" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> PremiumOnZee5 </label>
+						<input
+						type = "text"
+						name = "PremiumOnZee5"
+						th:field = "*{PremiumOnZee5}"
+						class = "form-control"
+						placeholder="Enter PremiumOnZee5" 
+						/>
+					</div>
+          
+					<div class ="form-group">
+						<label> FreeOnZee5 </label>
+						<input
+						type = "text"
+						name = "FreeOnZee5"
+						th:field = "*{FreeOnZee5}"
+						class = "form-control"
+						placeholder="Enter FreeOnZee5" 
+						/>
+					</div>
+          
+					<div class = "box-footer">
+						<button type="submit" class = "btn btn-primary">
+							Submit
+						</button>
+						<a th:href="@{/zee5dashboard/beforetv-filter}" class="btn btn-warning">Cancel</a>
+					</div>
+				</form>
+			
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- check the existing selected days -->
+<script type="text/javascript">
+  function checkDaysApplicable() {
+    var days = document.getElementsByClassName("days_applicable");
+    for (var day of days) {
+      day.checked = DayApplicable.value.includes(day.value);
+    }
+  }
+  checkDaysApplicable();
+
+  function clear_days_applicable() {
+    var days = document.getElementsByClassName("days_applicable");
+    if (all_check.checked) {
+      for (var day of days) {
+        if (day.id != "all_check") {
+          day.checked = false;
+          day.disabled = true;
+        }
+      }
+    } else {
+      for (var day of days) {
+        if (day.id != "all_check") {
+          day.disabled = false;
+        }
+      }
+    }
+  }
+  function clear_all_check() {
+    var selected_count = 0;
+    var days = document.getElementsByClassName("days_applicable");
+    for (var day of days) {
+        // for all days, add clear_days_applicable to listeners
+        if (day.id != "all_check" && day.checked) {
+        	selected_count++;
+        }
+    }
+    if (selected_count == 7) {
+    	all_check.checked = true;
+    	clear_days_applicable();
+    } else {
+        all_check.checked = false;
+    }
+  }
+
+  // add listeners for all checkbox options
+  function add_listeners() {
+    all_check.onchange = clear_days_applicable;
+    var days = document.getElementsByClassName("days_applicable");
+    for (var day of days) {
+      // for all days, add clear_days_applicable to listeners
+      if (day.id != "all_check") {
+        day.onchange = clear_all_check;
+      }
+    }
+  }
+  add_listeners();
+</script>
+
+<script type="text/javascript">
+ 
+ function myFunction2(){
+	 var value = document.getElementById("myCheck");  
+	    var getvalue = value.options[value.selectedIndex].value;  
+	    var gettext = value.options[value.selectedIndex].text;
+	 if (getvalue=="Yes") {
+		 	toch.className ="d-block"
+	      } else {
+	    	  toch.className="d-none"
+	      }
+ }
+ 
+ myFunction2();
+ 
+</script>
+
+
+
+
+
+
+<style>
+      footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      .text-white {
+        text-decoration: none;
+      }
+      #foot {
+        text-align: left;
+      }
+    </style>
+
+<!-- 
+    <footer class="bg-dark text-white">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        <div class="clearfix">
+          <a class="float-start text-white" th:href="@{/zee5dashboard}"
+            >Zee5dashboard</a
+          >
+        </div>
+        <!-- <a class="text-white" id="foot" th:href="@{zee5dashboard}">Zee5dashboard</a> -->
+      </div>
+      <!-- Copyright -->
+    </footer>
+ -->
+
+</body>
+</html>

@@ -86,9 +86,14 @@ public class BeforeTvFilterController {
 //	        return "redirect:/zee5dashboard/beforetv-dash";
 //	    }
 //	    
-
 	    
-	    @PostMapping("/filter-shows/{id}")
+	    @GetMapping("/zee5dashboard/filter-edit/{id}")
+		public String editShowForm(@PathVariable Long id, Model model) {
+			model.addAttribute("show", beforetvfilterService.getShowById(id));
+			return "BeforeTVFilter_EditShow";
+		}
+	    
+	    @PostMapping("/zee5dashboard/filter-shows/{id}")
 	    public String updateShow(@PathVariable Long id, @ModelAttribute("beforetvfilterService") BeforeTVFilter show, Model model) {
 	        // get show from database by id
 	        BeforeTVFilter existingShow = beforetvfilterService.getShowById(id);
@@ -113,7 +118,7 @@ public class BeforeTvFilterController {
 
 	        // save updated show object
 	        beforetvfilterService.updateShow(existingShow);
-	        return "redirect:/zee5dashboard/beforetv-dash";
+	        return "redirect:/zee5dashboard/beforetv-filter";
 	    }
 //	    
 //	    @GetMapping("/zee5dashboard/beforetv-delete/{id}")
@@ -122,7 +127,13 @@ public class BeforeTvFilterController {
 //	        return "redirect:/zee5dashboard/beforetv-dash";
 //	    }
 //	    
-//	    
+	    
+	     @GetMapping("/zee5dashboard/filter-delete/{id}")
+	    public String deleteShow(@PathVariable Long id) {
+	        beforetvfilterService.deleteShowById(id);
+	        return "redirect:/zee5dashboard/beforetv-filter";
+	    }
+	    
 	    // API functions
 //	    @GetMapping("/api/shows")
 //	    public ResponseEntity<?> listShowsApi() {

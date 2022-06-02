@@ -30,9 +30,12 @@ public class BeforeTvFilterServiceImpl implements BeforeTvFilterService{
 	@Override
 	public BeforeTVFilter updateShow(BeforeTVFilter existingShow) {
 		// TODO Auto-generated method stub
-		return beforetvfilterRepository.save(existingShow);
-
-		
+		return beforetvfilterRepository.save(existingShow);	
+	}
+	
+	@Override
+	public void deleteShowById(Long id) {
+		beforetvfilterRepository.deleteById(id);
 	}
 
 }
